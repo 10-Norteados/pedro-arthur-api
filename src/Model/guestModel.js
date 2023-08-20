@@ -19,6 +19,9 @@ class GuestModel extends Model {
             },
             suggestion: {
                 type: DataTypes.STRING
+            },
+            generatedLink: {
+                type: DataTypes.STRING
             }
         }, {
             sequelize,

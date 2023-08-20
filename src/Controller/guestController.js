@@ -35,8 +35,8 @@ class GuestController {
     }
     static async register(req, res) {
         try {
-            const { name, suggestion } = req.body
-            let returnCreate = await GuestModel.create({ name, suggestion });
+            const { name, suggestion, generatedLink } = req.body
+            let returnCreate = await GuestModel.create({ name, suggestion, generatedLink });
             if (returnCreate.id != null) {
                 return res.status(200).json(returnCreate)
             } else {
@@ -49,9 +49,9 @@ class GuestController {
     }
     static async comfirmed(req, res) {
         try {
-            const { isConfirmed, quantity } = req.body
+            const { isConfirmed, quantity, generatedLink } = req.body
             let id = req.params.id;
-            let returnUpdate = await GuestModel.update({ quantity, isConfirmed }, { where: { id } });
+            let returnUpdate = await GuestModel.update({ quantity, isConfirmed, generatedLink }, { where: { id } });
             if (returnUpdate != null) {
                 return res.status(200).json(returnUpdate)
             } else {
